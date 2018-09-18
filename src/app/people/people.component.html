@@ -1,0 +1,33 @@
+<div class="container-people">
+    <mat-nav-list>
+        <strong>
+            <a mat-list-item>
+                PEOPLE
+                <span class="spacer"></span> <!--spacer for space b/w text and icon-->
+                <mat-icon matTooltip="New Chat">add_circle_outline</mat-icon>
+            </a>
+        </strong>
+
+        <!--sender menu-->
+        <button mat-button [matMenuTriggerFor]="senderMenu">Select Sender</button>
+        <mat-menu #senderMenu="matMenu">
+            <div *ngFor="let user of users">
+                <p mat-menu-item (click)="setSender(user.userName)">
+                    {{user.userName}}
+                </p>
+            </div>
+        </mat-menu>
+
+        <!--receiver menu-->
+        <button mat-button [matMenuTriggerFor]="receiverMenu">Select Receiver</button>
+        <mat-menu #receiverMenu="matMenu">
+            <div *ngFor="let user of users">
+                <a routerLink="message-area/{{user.userId}}">
+                    <p mat-menu-item (click)="setReceiver(user.userName)">
+                        {{user.userName}}
+                    </p>
+                </a>
+            </div>
+        </mat-menu>
+    </mat-nav-list>
+</div>

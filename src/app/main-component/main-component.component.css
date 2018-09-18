@@ -1,0 +1,12 @@
+app-chat-input {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+.messages {
+    width: 100%;
+    position: absolute;
+    margin-bottom: 10%;
+}
+

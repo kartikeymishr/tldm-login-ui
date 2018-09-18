@@ -1,0 +1,23 @@
+.message-area {
+    margin-top: 72px;
+    margin-bottom: 100px;
+    padding: 8px;
+}
+
+.sender {
+    width: 50%;
+    padding: 16px;
+    float: right;
+    text-align: end;
+}
+
+.recipient {
+    width: 50%;
+    padding: 16px;
+    float: left;
+    text-align: start;
+}
+
+.time-stamp {
+    float: right;
+}

@@ -1,0 +1,14 @@
+<div class="mat-toolbar">
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <span *ngIf="userService.receiverName; else recipientName"> {{userService.receiverName}} </span>
+            <ng-template #recipientName><< Recipient name >></ng-template>
+            <span class="spacer"></span><!--spacer for space b/w icons-->
+            <span *ngIf="userService.senderName; else senderName"> {{userService.senderName}} </span>
+            <ng-template #senderName><< Sender name >></ng-template>
+            <mat-icon class="icon" matTooltip="Search">search</mat-icon>
+            <mat-icon class="icon" matTooltip="Settings">settings</mat-icon>
+            <mat-icon class="icon" matTooltip="More options">more_vert</mat-icon>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>

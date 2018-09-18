@@ -1,0 +1,40 @@
+<!--implement for loop here for multiple messages-->
+<div class="message-area">
+    <!--div for displaying messages fetched from database-->
+    <div *ngIf="messages">
+        <div *ngFor="let message of messages">
+            <div [className]="message.sender.userId===messageService.sender.userId?'sender':'recipient'">
+                <mat-card>
+                    <div class="messages">
+                        <p>
+                            {{message.messageContent}}
+                        </p>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <br>
+                    <div class="time-stamp">
+                        {{message.createdAt| date:'shortTime'}}
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+
+    <!--div for displaying broadcast messages-->
+    <div *ngFor="let msg of messageService.messagesArr">
+        <div [className]="msg.sender.userId===messageService.sender.userId?'sender':'recipient'">
+            <mat-card>
+                <div class="messages">
+                    <p>
+                        {{msg.messageContent}}
+                    </p>
+                </div>
+                <mat-divider></mat-divider>
+                <br>
+                <div class="time-stamp">
+                    {{msg.createdAt| date:'shortTime'}}
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>
