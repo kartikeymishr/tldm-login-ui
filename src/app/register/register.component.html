@@ -1,0 +1,70 @@
+<div class="heading">
+    <h2>
+        Register
+    </h2>
+</div>
+
+<div>
+    <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register(password2.value)" novalidate>
+        <div class="login-form">
+            <mat-form-field appearance="outline">
+                <mat-label>User ID</mat-label>
+                <input id="name"
+                       matInput
+                       formControlName="userId"
+                       [(ngModel)]="user.userId"
+                       placeholder="Enter your User ID"
+                       required>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input id="email"
+                       matInput
+                       formControlName="email"
+                       [(ngModel)]="user.email"
+                       placeholder="Enter your Email ID"
+                       required>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input id="password"
+                       matInput
+                       formControlName="password"
+                       [(ngModel)]="user.password"
+                       placeholder="Enter your password"
+                       [type]="hide ? 'password':'text'"
+                       required>
+                <mat-icon matSuffix (click)="hide = !hide">
+                    {{hide ? 'visibility' : 'visibility_off'}}
+                </mat-icon>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Confirm Password</mat-label>
+                <input id="password2"
+                       matInput
+                       #password2
+                       placeholder="Confirm password"
+                       [type]="hide ? 'password':'text'"
+                       required>
+                <mat-icon matSuffix (click)="hide = !hide">
+                    {{hide ? 'visibility' : 'visibility_off'}}
+                </mat-icon>
+            </mat-form-field>
+
+            <div class="button-row">
+                <button mat-raised-button
+                        color="primary"
+                        type="submit"
+                        [disabled]="!registerForm.valid">Register
+                </button>
+                <a mat-raised-button color="accent" routerLink="/login">Login</a>
+            </div>
+        </div>
+    </form>
+</div>

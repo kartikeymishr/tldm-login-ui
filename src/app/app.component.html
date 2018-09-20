@@ -1,18 +1,1 @@
-<mat-sidenav-container xLayout="row" fxLayoutAlign="center none" class="main-component-container">
-    <mat-sidenav  mode="side" opened class="sideNav">
-        <h2>
-          <strong><button class="mat-h1" mat-button [matMenuTriggerFor]="menu"> Community name </button></strong>
-            <mat-menu #menu="matMenu">
-                <!--implement for loop for multiple communities-->
-                <button mat-menu-item><< Community name >></button>
-            </mat-menu>
-        </h2>
-        <hr>
-        <app-sidebar-component></app-sidebar-component>
-    </mat-sidenav>
-    <mat-sidenav-content class="main">
-        <app-main-component></app-main-component>
-    </mat-sidenav-content>
-</mat-sidenav-container>
-
-
+<router-outlet></router-outlet>

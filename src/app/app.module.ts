@@ -16,9 +16,13 @@ import {MessagesComponent} from './messages/messages.component';
 import {ChatInputComponent} from './chat-input/chat-input.component';
 import {MatInputModule} from '@angular/material/input';
 import {ToolbarComponent} from './toolbar/toolbar.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './/app-routing.module';
+import {LoginComponent} from './login/login.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {RegisterComponent} from './register/register.component';
 
 @NgModule({
     declarations: [
@@ -29,7 +33,10 @@ import {AppRoutingModule} from './/app-routing.module';
         PeopleComponent,
         MessagesComponent,
         ChatInputComponent,
-        ToolbarComponent
+        ToolbarComponent,
+        LoginComponent,
+        DashboardComponent,
+        RegisterComponent
     ],
     imports: [
         BrowserModule,
@@ -46,7 +53,9 @@ import {AppRoutingModule} from './/app-routing.module';
         MatInputModule,
         FormsModule,
         HttpClientModule,
-        AppRoutingModule
+        AppRoutingModule,
+        MatFormFieldModule,
+        ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
-import {Message} from './message';
+import {Message} from './models/message';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {User} from './user';
+import {User} from './models/user';
 
 
 @Injectable({

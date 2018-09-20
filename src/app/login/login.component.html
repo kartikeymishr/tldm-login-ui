@@ -1,0 +1,35 @@
+<div class="heading">
+    <h2>
+        Login
+    </h2>
+</div>
+
+<form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && login()" novalidate>
+    <div class="login-form">
+        <mat-form-field appearance="outline">
+            <mat-label>User ID</mat-label>
+            <input id="userId"
+                   matInput
+                   formControlName="userId"
+                   [(ngModel)]="user.userId"
+                   placeholder="Enter your User ID">
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input id="password"
+                   type="password"
+                   matInput
+                   formControlName="password"
+                   [(ngModel)]="user.password"
+                   placeholder="Enter your password">
+        </mat-form-field>
+
+        <div class="button-row">
+            <button mat-raised-button color="primary">Login</button>
+            <a mat-raised-button color="accent" routerLink="/register">Register</a>
+            <button mat-raised-button color="warn" (click)="logout()">Logout</button>
+        </div>
+    </div>
+</form>
