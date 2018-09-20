@@ -7,27 +7,15 @@
                 <mat-icon matTooltip="New Chat">add_circle_outline</mat-icon>
             </a>
         </strong>
-
-        <!--sender menu-->
-        <button mat-button [matMenuTriggerFor]="senderMenu">Select Sender</button>
-        <mat-menu #senderMenu="matMenu">
+        <mat-list>
             <div *ngFor="let user of users">
-                <p mat-menu-item (click)="setSender(user.userName)">
-                    {{user.userName}}
-                </p>
-            </div>
-        </mat-menu>
-
-        <!--receiver menu-->
-        <button mat-button [matMenuTriggerFor]="receiverMenu">Select Receiver</button>
-        <mat-menu #receiverMenu="matMenu">
-            <div *ngFor="let user of users">
-                <a routerLink="message-area/{{user.userId}}">
-                    <p mat-menu-item (click)="setReceiver(user.userName)">
+                <button mat-button="" (click)="setReceiver(user.userName)">
+                    <p>
                         {{user.userName}}
                     </p>
-                </a>
+                </button>
+                <br>
             </div>
-        </mat-menu>
+        </mat-list>
     </mat-nav-list>
 </div>

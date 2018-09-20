@@ -5,8 +5,7 @@ export class Message {
     messageContent: string;
     sender: User;
     receiver: User;
-    createdAt: Date;
-
+    timestamp: Date;
 
     constructor(messageContent: string, sender: User, receiver: User) {
         this.messageContent = messageContent;

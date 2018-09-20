@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user.service';
-import {User} from '../user';
+import {User} from '../model/user';
 import {MessageService} from '../message.service';
 
 @Component({
@@ -9,6 +9,7 @@ import {MessageService} from '../message.service';
     styleUrls: ['./people.component.css']
 })
 export class PeopleComponent implements OnInit {
+
     users: User[];
     user: User;
 
@@ -25,7 +26,6 @@ export class PeopleComponent implements OnInit {
 
     // setting sender value for front-end
     setSender(name: string) {
-        this.userService.setSender(name);
         this.userService.getUserDetailsByName(name).subscribe(data => {
             console.log(this.user = data);
             this.messageService.setSender(this.user);
@@ -34,7 +34,6 @@ export class PeopleComponent implements OnInit {
 
     // setting receiver value for front-end
     setReceiver(name: string) {
-        this.userService.setReceiver(name);
         this.userService.getUserDetailsByName(name).subscribe(data => {
             console.log(this.user = data);
             this.messageService.setReceiver(this.user);

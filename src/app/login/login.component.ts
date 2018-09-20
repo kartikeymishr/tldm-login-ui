@@ -4,6 +4,7 @@ import {AuthUser} from '../model/auth-user';
 import {AuthenticationService} from '../authentication.service';
 import {Router} from '@angular/router';
 import {MessageService} from '../message.service';
+import {UserService} from '../user.service';
 
 @Component({
     selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
     constructor(private authService: AuthenticationService,
                 private formBuilder: FormBuilder,
                 private router: Router,
-                private messageService: MessageService) {
+                private messageService: MessageService,
+                private userService: UserService) {
     }
 
     ngOnInit() {
@@ -51,6 +53,10 @@ export class LoginComponent implements OnInit {
                 if (this.isValidated) {
                     this.router.navigateByUrl('/dashboard');
                     this.messageService.establishConnection(data.userId);
+                    this.userService.getUserDetailsById(data.userId).subscribe(user => {
+                        this.messageService.setSender(user);
+                        console.log(user);
+                    });
                 }
             });
         console.log(this.user);

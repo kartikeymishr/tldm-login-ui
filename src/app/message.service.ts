@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
-import {Message} from './message';
+import {Message} from './model/message';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {User} from './user';
+import {User} from './model/user';
 
 
 @Injectable({
@@ -15,6 +15,7 @@ export class MessageService {
     private serverUrl = 'http://172.23.239.122:8067/web-socket';
     private stompClient = null;
     messagesArr: Message[] = [];
+
     sender: User;
     receiver: User;
 
@@ -33,8 +34,8 @@ export class MessageService {
         });
     }
 
-    getAllMessagesBySenderAndReceiver(r_id: string): Observable<Message[]> {
-        return this.http.get<Message[]>(`http://172.23.239.104:8068/api/v1/message/${this.sender.userId}/${r_id}`);
+    getAllMessagesBySenderAndReceiver(): Observable<Message[]> {
+        return this.http.get<Message[]>(`http://172.23.239.104:8068/api/v1/message/${this.sender.userId}/${this.receiver.userId}`);
     }
 
     disconnect() {
@@ -66,7 +67,6 @@ export class MessageService {
 
     sendMessage(message: Message) {
         console.log(message);
-        this.stompClient.send('/app/chat', {}, JSON.stringify(message))
-        ;
+        this.stompClient.send('/app/chat', {}, JSON.stringify(message));
     }
 }

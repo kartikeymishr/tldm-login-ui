@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MessageService} from '../message.service';
-import {Message} from '../message';
+import {Message} from '../model/message';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -17,7 +17,7 @@ export class MessagesComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.messageService.getAllMessagesBySenderAndReceiver(this.route.snapshot.paramMap.get('id')).subscribe(data => {
+        this.messageService.getAllMessagesBySenderAndReceiver().subscribe(data => {
             this.messages = data;
         });
     }
