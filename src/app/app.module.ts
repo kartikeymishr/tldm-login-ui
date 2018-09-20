@@ -24,6 +24,7 @@ import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {SortbyTimestampPipe} from './sortby-timestamp.pipe';
 
 @NgModule({
     declarations: [
@@ -38,7 +39,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
         DashboardComponent,
         RegisterComponent,
         LoginComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        SortbyTimestampPipe
     ],
     imports: [
         BrowserModule,

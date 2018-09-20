@@ -14,8 +14,8 @@ export class MessageService {
 
     private serverUrl = 'http://172.23.239.122:8067/web-socket';
     private stompClient = null;
-    messagesArr: Message[];
-    messages: Message[];
+    messagesArr: Message[] = [];
+    messages: Message[] = [];
 
     sender: User;
     receiver: User;
@@ -73,6 +73,16 @@ export class MessageService {
     }
 
     setMessages(messages: Message[]) {
+        messages.sort((message1, message2) => {
+            if (message1.timestamp < message2.timestamp) {
+                return -1;
+            } else if (message1.timestamp > message2.timestamp) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+
         this.messages = messages;
     }
 }
