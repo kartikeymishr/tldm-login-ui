@@ -1,8 +1,8 @@
 <!--implement for loop here for multiple messages-->
 <div class="message-area">
     <!--div for displaying messages fetched from database-->
-    <div *ngIf="messages">
-        <div *ngFor="let message of messages">
+    <div *ngIf="messageService.messages">
+        <div *ngFor="let message of messageService.messages">
             <div [className]="message.sender.userId===messageService.sender.userId?'sender':'recipient'">
                 <mat-card>
                     <div class="messages">

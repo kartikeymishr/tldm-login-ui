@@ -10,15 +10,12 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class MessagesComponent implements OnInit {
 
-    messages: Message[];
+    // messages: Message[];
 
     constructor(public messageService: MessageService,
                 private route: ActivatedRoute) {
     }
 
     ngOnInit() {
-        this.messageService.getAllMessagesBySenderAndReceiver().subscribe(data => {
-            this.messages = data;
-        });
     }
 }
