@@ -13,8 +13,8 @@
                        matInput
                        formControlName="userId"
                        [(ngModel)]="user.userId"
-                       placeholder="Enter your User ID"
-                       required>
+                       placeholder="Enter your User ID">
+                <mat-error *ngIf="userId.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
             <br>
 
@@ -24,8 +24,8 @@
                        matInput
                        formControlName="email"
                        [(ngModel)]="user.email"
-                       placeholder="Enter your Email ID"
-                       required>
+                       placeholder="Enter your Email ID">
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
             <br>
 
@@ -36,11 +36,11 @@
                        formControlName="password"
                        [(ngModel)]="user.password"
                        placeholder="Enter your password"
-                       [type]="hide ? 'password':'text'"
-                       required>
+                       [type]="hide ? 'password':'text'">
                 <mat-icon matSuffix (click)="hide = !hide">
                     {{hide ? 'visibility' : 'visibility_off'}}
                 </mat-icon>
+                <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
             <br>
 
@@ -49,21 +49,24 @@
                 <input id="password2"
                        matInput
                        #password2
+                       formControlName="password2"
                        placeholder="Confirm password"
-                       [type]="hide ? 'password':'text'"
-                       required>
-                <mat-icon matSuffix (click)="hide = !hide">
-                    {{hide ? 'visibility' : 'visibility_off'}}
+                       [type]="hide2 ? 'password':'text'">
+                <mat-icon matSuffix (click)="hide2 = !hide2">
+                    {{hide2 ? 'visibility' : 'visibility_off'}}
                 </mat-icon>
+                <mat-error *ngIf="password2.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
-
+            <br>
             <div class="button-row">
                 <button mat-raised-button
                         color="primary"
                         type="submit"
-                        [disabled]="!registerForm.valid">Register
+                        [disabled]="!registerForm.valid"
+                        id="register">
+                    Register
                 </button>
-                <a mat-raised-button color="accent" routerLink="/login">Login</a>
+                <a mat-raised-button color="accent" routerLink="/login" id="login">Already registered? Login here</a>
             </div>
         </div>
     </form>

@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../auth.service';
-import {AuthUser} from '../models/auth-user';
-import {UserTokenStorage} from '../user-token-storage';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthUser} from '../model/auth-user';
+import {AuthenticationService} from '../authentication.service';
+import {Router} from '@angular/router';
+import {MessageService} from '../message.service';
 
 @Component({
     selector: 'app-login',
@@ -14,10 +15,14 @@ export class LoginComponent implements OnInit {
     user: AuthUser = new AuthUser();
     loginForm: FormGroup;
     hide = true;
+    isValidated: boolean;
+    userId = new FormControl('', [Validators.required]);
+    password = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
-    constructor(private authService: AuthService,
-                private token: UserTokenStorage,
-                private formBuilder: FormBuilder) {
+    constructor(private authService: AuthenticationService,
+                private formBuilder: FormBuilder,
+                private router: Router,
+                private messageService: MessageService) {
     }
 
     ngOnInit() {
@@ -36,15 +41,25 @@ export class LoginComponent implements OnInit {
     login() {
         this.authService.login(this.user)
             .subscribe(data => {
-                this.token.saveToken(data.token);
-                console.log(data);
+                // this.token.saveToken(data.token);
+                if (data.userId === this.user.userId) {
+                    this.isValidated = true;
+                    console.log('Welcome ' + data.userId);
+                } else {
+                    this.isValidated = false;
+                }
+                if (this.isValidated) {
+                    this.router.navigateByUrl('/dashboard');
+                    this.messageService.establishConnection(data.userId);
+                }
             });
         console.log(this.user);
     }
 
-    logout() {
-        this.token.removeToken();
-        console.log('removed token');
+    getErrorMessage() {
+        return this.userId.hasError('required') ? 'Cannot be left empty' :
+            this.password.hasError('required') ? 'Cannot be left empty' :
+                this.password.hasError('minLength') ? 'Password must contain 6 or more characters' : '';
     }
 
 }

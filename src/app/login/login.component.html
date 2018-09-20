@@ -13,6 +13,7 @@
                    formControlName="userId"
                    [(ngModel)]="user.userId"
                    placeholder="Enter your User ID">
+            <mat-error *ngIf="userId.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
         <br>
 
@@ -24,12 +25,12 @@
                    formControlName="password"
                    [(ngModel)]="user.password"
                    placeholder="Enter your password">
+            <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
-
+        <br>
         <div class="button-row">
-            <button mat-raised-button color="primary">Login</button>
-            <a mat-raised-button color="accent" routerLink="/register">Register</a>
-            <button mat-raised-button color="warn" (click)="logout()">Logout</button>
+            <button mat-raised-button color="primary" id="login">Login</button>
+            <a mat-raised-button color="accent" routerLink="/register" id="register">New user? Register here</a>
         </div>
     </div>
 </form>

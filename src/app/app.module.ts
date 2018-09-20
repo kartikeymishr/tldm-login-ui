@@ -19,10 +19,11 @@ import {ToolbarComponent} from './toolbar/toolbar.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './/app-routing.module';
-import {LoginComponent} from './login/login.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import {RegisterComponent} from './register/register.component';
+import {LoginComponent} from './login/login.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
     declarations: [
@@ -34,9 +35,10 @@ import {RegisterComponent} from './register/register.component';
         MessagesComponent,
         ChatInputComponent,
         ToolbarComponent,
-        LoginComponent,
         DashboardComponent,
-        RegisterComponent
+        RegisterComponent,
+        LoginComponent,
+        PageNotFoundComponent
     ],
     imports: [
         BrowserModule,
@@ -54,8 +56,8 @@ import {RegisterComponent} from './register/register.component';
         FormsModule,
         HttpClientModule,
         AppRoutingModule,
-        MatFormFieldModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatSnackBarModule
     ],
     providers: [],
     bootstrap: [AppComponent]

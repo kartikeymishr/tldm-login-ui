@@ -17,3 +17,11 @@
 .button-row a {
     margin-right: 8px;
 }
+
+#register {
+    float: left;
+}
+
+#login {
+    float: right;
+}

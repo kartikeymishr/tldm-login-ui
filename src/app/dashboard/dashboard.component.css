@@ -1,0 +1,40 @@
+app-chat-input {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.mat-toolbar {
+    position: fixed;
+    top: 0px;
+}
+
+.icon {
+    padding: 0 14px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.messages {
+    width: 100%;
+    position: absolute;
+    margin-bottom: 10%;
+}
+
+.community {
+    padding-left: 40px;
+}
+
+.button-row button {
+    margin-right: 16px;
+}

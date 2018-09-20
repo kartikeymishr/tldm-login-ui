@@ -1,18 +1,52 @@
-<mat-sidenav-container xLayout="row" fxLayoutAlign="center none" class="main-component-container">
-    <mat-sidenav mode="side" opened class="sideNav">
+<mat-sidenav-container class="example-container" autosize>
+    <mat-sidenav #sidenav mode="side"
+                 [(opened)]="opened">
         <h2>
             <strong>
-                <button class="mat-h1" mat-button [matMenuTriggerFor]="menu"> Community name</button>
+                <button class="mat-h1" mat-button [matMenuTriggerFor]="menu">Community name</button>
             </strong>
             <mat-menu #menu="matMenu">
                 <!--implement for loop for multiple communities-->
-                <button mat-menu-item><< Community name >></button>
+                <button mat-menu-item class="community"><< Community name >></button>
             </mat-menu>
         </h2>
         <hr>
         <app-sidebar-component></app-sidebar-component>
     </mat-sidenav>
+
     <mat-sidenav-content class="main">
-        <app-main-component></app-main-component>
+        <div class="mat-toolbar">
+            <mat-toolbar color="primary">
+                <mat-toolbar-row>
+                    <button mat-icon-button (click)="sidenav.toggle()">
+                        <mat-icon class="icon" matTooltip="Side Menu">
+                            menu
+                        </mat-icon>
+                    </button>
+
+                    <!--<span *ngIf="userService.receiverName; else recipientName"> {{userService.receiverName}} </span>-->
+                    <ng-template #recipientName><< Recipient name >></ng-template>
+                    <span class="spacer"></span><!--spacer for space b/w icons-->
+                    <!--<span *ngIf="userService.senderName; else senderName"> {{userService.senderName}} </span>-->
+                    <ng-template #senderName><< Sender name >></ng-template>
+                    <div class="button-row">
+                        <button mat-icon-button>
+                            <mat-icon class="icon" matTooltip="Search">search</mat-icon>
+                        </button>
+                        <button mat-icon-button>
+                            <mat-icon class="icon" matTooltip="Settings">settings</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="logout()">
+                            <mat-icon class="icon" matTooltip="Logout">exit_to_app</mat-icon>
+                        </button>
+                        <button mat-icon-button>
+                            <mat-icon class="icon" matTooltip="More options">more_vert</mat-icon>
+                        </button>
+                    </div>
+                </mat-toolbar-row>
+            </mat-toolbar>
+        </div>
+        <!--<app-messages></app-messages>-->
+        <app-chat-input></app-chat-input>
     </mat-sidenav-content>
 </mat-sidenav-container>
