@@ -28,8 +28,8 @@ export class PeopleComponent implements OnInit {
     }
 
     // setting receiver value for front-end
-    setReceiver(name: string) {
-        this.userService.getUserDetailsByName(name).subscribe(data => {
+    setReceiver(userId: string) {
+        this.userService.getUserDetailsById(userId).subscribe(data => {
             console.log(this.user = data);
             this.messageService.setReceiver(this.user);
             this.messageService.getAllMessagesBySenderAndReceiver().subscribe(messages => {
