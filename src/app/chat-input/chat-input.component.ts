@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {MessageService} from '../service/message.service';
 import {Message} from '../model/message';
+import {MessageService} from '../service/message.service';
 
 @Component({
     selector: 'app-chat-input',

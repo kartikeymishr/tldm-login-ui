@@ -4,6 +4,12 @@ app-chat-input {
     bottom: 0;
 }
 
+app-messages {
+    width: 100%;
+    position: absolute;
+    margin-bottom: 10%;
+}
+
 .example-container {
     position: absolute;
     top: 0;

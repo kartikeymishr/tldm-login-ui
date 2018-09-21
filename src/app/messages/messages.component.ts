@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {MessageService} from '../service/message.service';
-import {Message} from '../model/message';
-import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'app-messages',
@@ -10,10 +8,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class MessagesComponent implements OnInit {
 
-    // messages: Message[];
-
-    constructor(public messageService: MessageService,
-                private route: ActivatedRoute) {
+    constructor(public messageService: MessageService) {
     }
 
     ngOnInit() {
