@@ -36,6 +36,7 @@ export class MessageService {
     }
 
     getAllMessagesBySenderAndReceiver(): Observable<Message[]> {
+        console.log('from message service');
         console.log(this.receiver);
         return this.http.get<Message[]>(`http://172.23.239.104:8068/api/v1/message/${this.sender.userId}/${this.receiver.userId}`);
     }
@@ -68,6 +69,7 @@ export class MessageService {
     }
 
     sendMessage(message: Message) {
+        console.log('form message service');
         console.log(message);
         this.stompClient.send('/app/chat', {}, JSON.stringify(message));
     }
