@@ -12,7 +12,7 @@
                 <input id="name"
                        matInput
                        formControlName="userId"
-                       [(ngModel)]="user.userId"
+                       [(ngModel)]="authUser.userId"
                        placeholder="Enter your User ID">
                 <mat-error *ngIf="userId.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
@@ -23,7 +23,7 @@
                 <input id="email"
                        matInput
                        formControlName="email"
-                       [(ngModel)]="user.email"
+                       [(ngModel)]="authUser.email"
                        placeholder="Enter your Email ID">
                 <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
@@ -34,7 +34,7 @@
                 <input id="password"
                        matInput
                        formControlName="password"
-                       [(ngModel)]="user.password"
+                       [(ngModel)]="authUser.password"
                        placeholder="Enter your password"
                        [type]="hide ? 'password':'text'">
                 <mat-icon matSuffix (click)="hide = !hide">

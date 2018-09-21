@@ -1,7 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {User} from './model/user';
+import {User} from '../model/user';
+
+const httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+};
 
 @Injectable({
     providedIn: 'root'
@@ -11,14 +15,9 @@ export class UserService {
     receiverName: string;
     senderName: string;
 
-    constructor(private httpClient: HttpClient) {
-    }
-
     baseUrl = 'http://172.23.239.62:8069/api/user';
 
-
-    getAllUsers(): Observable<User[]> {
-        return this.httpClient.get<User[]>(this.baseUrl);
+    constructor(private httpClient: HttpClient) {
     }
 
     setSender(name: string) {
@@ -27,6 +26,14 @@ export class UserService {
 
     setReceiver(name: string) {
         this.receiverName = name;
+    }
+
+    registerUser(user: User): Observable<User> {
+        return this.httpClient.post<User>(this.baseUrl, user, httpOptions);
+    }
+
+    getAllUsers(): Observable<User[]> {
+        return this.httpClient.get<User[]>(this.baseUrl);
     }
 
     getUserDetailsByName(name: string): Observable<User> {

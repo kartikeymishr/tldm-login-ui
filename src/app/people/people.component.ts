@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../user.service';
+import {UserService} from '../service/user.service';
 import {User} from '../model/user';
-import {MessageService} from '../message.service';
+import {MessageService} from '../service/message.service';
 import {Message} from '../model/message';
 
 @Component({
@@ -24,14 +24,6 @@ export class PeopleComponent implements OnInit {
         // fetching all users on component initialization
         this.userService.getAllUsers().subscribe((data: User[]) => {
             this.users = data;
-        });
-    }
-
-    // setting sender value for front-end
-    setSender(name: string) {
-        this.userService.getUserDetailsByName(name).subscribe(data => {
-            console.log(this.user = data);
-            this.messageService.setSender(this.user);
         });
     }
 

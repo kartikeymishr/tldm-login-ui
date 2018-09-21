@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {RegisterUser} from './model/register-user';
+import {RegisterUser} from '../model/register-user';
 import {Observable} from 'rxjs';
-import {AuthUser} from './model/auth-user';
+import {AuthUser} from '../model/auth-user';
 
 const httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})

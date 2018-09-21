@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {MessageService} from '../message.service';
+import {MessageService} from '../service/message.service';
 
 @Component({
     selector: 'app-dashboard',
