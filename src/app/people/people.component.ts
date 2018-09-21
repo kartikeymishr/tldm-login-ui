@@ -17,7 +17,7 @@ export class PeopleComponent implements OnInit {
     messages: Message[];
 
     constructor(private userService: UserService,
-                private messageService: MessageService) {
+                public messageService: MessageService) {
     }
 
     ngOnInit() {

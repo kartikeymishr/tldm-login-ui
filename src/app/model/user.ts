@@ -4,7 +4,8 @@ export class User {
     phoneNumber: string;
     userMail: string;
 
-    constructor(userId: string, userMail: string) {
+    constructor(userId: string, userName: string, userMail: string) {
+        this.userName = userName;
         this.userId = userId;
         this.userMail = userMail;
     }

@@ -20,6 +20,8 @@ export class RegisterComponent implements OnInit {
     hide = true;
     hide2 = true;
     userId = new FormControl('', [Validators.required]);
+    name: string;
+    userName = new FormControl('', [Validators.required]);
     email = new FormControl('', [Validators.required, Validators.email]);
     password = new FormControl('', [Validators.required, Validators.minLength(6)]);
     password2 = new FormControl('', [Validators.required, Validators.minLength(6)]);
@@ -35,6 +37,9 @@ export class RegisterComponent implements OnInit {
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
             'userId': [this.authUser.userId, [
+                Validators.required
+            ]],
+            'userName': [this.userName, [
                 Validators.required
             ]],
             'email': [this.authUser.email, [
@@ -61,7 +66,7 @@ export class RegisterComponent implements OnInit {
                         this.registerSuccess = true;
                     }
                     if (this.registerSuccess) {
-                        this.user = new User(this.authUser.userId, this.authUser.email);
+                        this.user = new User(this.authUser.userId, this.name, this.authUser.email);
                         this.userService.registerUser(this.user).subscribe((user) => {
                             console.log('Registered ' + user);
                         });
@@ -76,11 +81,12 @@ export class RegisterComponent implements OnInit {
 
     getErrorMessage() {
         return this.userId.hasError('required') ? 'You must enter a value' :
-            this.email.hasError('email') ? 'Please enter a valid email address' :
-                this.password.hasError('required') ? 'You must enter a value' :
-                    this.password.hasError('minLength') ? 'Password must be greater than 6 characters' :
-                        this.password2.hasError('required') ? 'You must enter a value' :
-                            this.password2.hasError('minLength') ? 'Password mut be greater than 6 characters' : '';
+            this.userName.hasError('required') ? 'You must enter a value' :
+                this.email.hasError('email') ? 'Please enter a valid email address' :
+                    this.password.hasError('required') ? 'You must enter a value' :
+                        this.password.hasError('minLength') ? 'Password must be greater than 6 characters' :
+                            this.password2.hasError('required') ? 'You must enter a value' :
+                                this.password2.hasError('minLength') ? 'Password mut be greater than 6 characters' : '';
     }
 
 }

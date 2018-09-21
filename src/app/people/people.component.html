@@ -8,12 +8,15 @@
             </a>
         </strong>
         <mat-list>
+
             <div *ngFor="let user of users">
-                <button mat-button="" (click)="setReceiver(user.userId)">
-                    <p>
-                        {{user.userId}}
-                    </p>
-                </button>
+                <div *ngIf="messageService.sender.userId!==user.userId">
+                    <button mat-button (click)="setReceiver(user.userId)">
+                        <p>
+                            {{user.userName}}
+                        </p>
+                    </button>
+                </div>
                 <br>
             </div>
         </mat-list>

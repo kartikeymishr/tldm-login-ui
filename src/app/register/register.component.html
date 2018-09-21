@@ -9,12 +9,23 @@
         <div class="login-form">
             <mat-form-field appearance="outline">
                 <mat-label>User ID</mat-label>
-                <input id="name"
+                <input id="userId"
                        matInput
                        formControlName="userId"
                        [(ngModel)]="authUser.userId"
                        placeholder="Enter your User ID">
                 <mat-error *ngIf="userId.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Full Name</mat-label>
+                <input id="userName"
+                       matInput
+                       formControlName="userName"
+                       [(ngModel)]="name"
+                       placeholder="Enter your Full Name">
+                <mat-error *ngIf="userName.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
             <br>
 
