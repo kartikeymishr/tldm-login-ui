@@ -74,6 +74,7 @@ export class MessageService {
 
     setMessages(messages: Message[]) {
         this.messages = [];
+        this.messagesArr = [];
         messages.sort((message1, message2) => {
             if (message1.timestamp < message2.timestamp) {
                 return -1;

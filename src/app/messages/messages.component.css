@@ -21,3 +21,11 @@
 .time-stamp {
     float: right;
 }
+
+.message-service {
+    color: red;
+}
+
+.web-socket {
+    color: blue;
+}

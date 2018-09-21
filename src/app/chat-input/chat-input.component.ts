@@ -23,6 +23,8 @@ export class ChatInputComponent implements OnInit {
         this.value = '';
         if (messageContent !== '') {
             this.message = new Message(messageContent, this.messageService.getSender(), this.messageService.getReceiver());
+            console.log(this.messageService.getSender());
+            console.log(this.messageService.getReceiver());
             this.messageService.sendMessage(this.message);
         }
     }
