@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
                     this.isValidated = false;
                 }
                 if (this.isValidated) {
+                    this.messageService.clearMessages();
                     this.router.navigateByUrl('/dashboard');
                     this.messageService.establishConnection(data.userId);
                     this.userService.getUserDetailsById(data.userId).subscribe(user => {

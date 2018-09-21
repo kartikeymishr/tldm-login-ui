@@ -20,6 +20,8 @@ export class MessageService {
     sender: User;
     receiver: User;
 
+    isDisplayed = false;
+
     constructor(private http: HttpClient) {
     }
 
@@ -75,8 +77,8 @@ export class MessageService {
     }
 
     setMessages(messages: Message[]) {
-        this.messages = [];
-        this.messagesArr = [];
+        this.clearMessages();
+
         messages.sort((message1, message2) => {
             if (message1.timestamp < message2.timestamp) {
                 return -1;
@@ -88,5 +90,10 @@ export class MessageService {
         });
 
         this.messages = messages;
+    }
+
+    clearMessages() {
+        this.messages = [];
+        this.messagesArr = [];
     }
 }

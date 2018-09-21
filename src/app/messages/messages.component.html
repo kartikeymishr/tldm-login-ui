@@ -21,21 +21,23 @@
     </div>
 
     <!--div for displaying broadcast messages-->
-    <div *ngFor="let msg of messageService.messagesArr">
-        <div *ngIf="(msg.sender.userId===messageService.sender.userId)||(msg.receiver.userId===messageService.sender.userId)">
-            <div [className]="msg.sender.userId===messageService.sender.userId?'sender':'recipient'">
-                <mat-card>
-                    <div class="messages">
-                        <p>
-                            {{msg.messageContent}}
-                        </p>
-                    </div>
-                    <mat-divider></mat-divider>
-                    <br>
-                    <div class="time-stamp">
-                        {{msg.timestamp| date:'shortTime'}}
-                    </div>
-                </mat-card>
+    <div *ngIf="messageService.isDisplayed">
+        <div *ngFor="let msg of messageService.messagesArr">
+            <div *ngIf="(msg.sender.userId===messageService.sender.userId)||(msg.receiver.userId===messageService.sender.userId)">
+                <div [className]="msg.sender.userId===messageService.sender.userId?'sender':'recipient'">
+                    <mat-card>
+                        <div class="messages">
+                            <p>
+                                {{msg.messageContent}}
+                            </p>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <br>
+                        <div class="time-stamp">
+                            {{msg.timestamp| date:'shortTime'}}
+                        </div>
+                    </mat-card>
+                </div>
             </div>
         </div>
     </div>
