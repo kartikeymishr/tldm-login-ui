@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
     }
 
     logout() {
+        this.messageService.messagesArr = [];
         this.router.navigateByUrl('/login');
         this.messageService.disconnect();
     }
