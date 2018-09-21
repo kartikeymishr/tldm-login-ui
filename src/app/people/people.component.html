@@ -7,18 +7,17 @@
                 <mat-icon matTooltip="New Chat">add_circle_outline</mat-icon>
             </a>
         </strong>
-        <mat-list>
-
-            <div *ngFor="let user of users">
-                <div *ngIf="messageService.sender.userId!==user.userId">
-                    <button mat-button (click)="setReceiver(user.userId)">
-                        <p>
+        <div class="list">
+            <mat-list>
+                <div *ngFor="let user of users">
+                    <div *ngIf="messageService.sender.userId!==user.userId">
+                        <mat-list-item (click)="setReceiver(user.userId)">
                             {{user.userName}}
-                        </p>
-                    </button>
+                        </mat-list-item>
+                        <br>
+                    </div>
                 </div>
-                <br>
-            </div>
-        </mat-list>
+            </mat-list>
+        </div>
     </mat-nav-list>
 </div>
