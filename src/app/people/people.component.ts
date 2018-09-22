@@ -13,7 +13,6 @@ export class PeopleComponent implements OnInit {
 
     users: User[];
     user: User;
-
     messages: Message[];
 
     constructor(private userService: UserService,
@@ -37,6 +36,7 @@ export class PeopleComponent implements OnInit {
 
     // setting receiver value for front-end
     setReceiver(userId: string) {
+        this.messageService.resetNotification();
         this.userService.getUserDetailsById(userId).subscribe(data => {
             console.log(this.user = data);
             this.messageService.setReceiver(this.user);

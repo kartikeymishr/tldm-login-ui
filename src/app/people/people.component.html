@@ -13,6 +13,12 @@
                     <div *ngIf="messageService.sender.userId!==user.userId">
                         <mat-list-item (click)="setReceiver(user.userId)">
                             {{user.userName}}
+                            <span class="spacer"></span>
+                            <div *ngIf="(this.messageService.notification.isActive)&&(this.messageService.notification.userId===user.userId)">
+                                <mat-icon class="notif-icon">
+                                    fiber_manual_record
+                                </mat-icon>
+                            </div>
                         </mat-list-item>
                         <br>
                     </div>

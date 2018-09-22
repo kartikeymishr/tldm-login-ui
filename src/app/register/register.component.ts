@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
     hide2 = true;
     userId = new FormControl('', [Validators.required]);
     name: string;
-    userName = new FormControl('', [Validators.required]);
+    userName = new FormControl('', [Validators.required, Validators.minLength(3)]);
     email = new FormControl('', [Validators.required, Validators.email]);
     password = new FormControl('', [Validators.required, Validators.minLength(6)]);
     password2 = new FormControl('', [Validators.required, Validators.minLength(6)]);
@@ -37,7 +37,8 @@ export class RegisterComponent implements OnInit {
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
             'userId': [this.authUser.userId, [
-                Validators.required
+                Validators.required,
+                Validators.minLength(3)
             ]],
             'userName': [this.userName, [
                 Validators.required
@@ -69,6 +70,7 @@ export class RegisterComponent implements OnInit {
                         this.user = new User(this.authUser.userId, this.name, this.authUser.email);
                         this.userService.registerUser(this.user).subscribe((user) => {
                             console.log('Registered ' + user);
+                            this.messageService.setSender(user);
                         });
                         this.router.navigateByUrl('/dashboard');
                         this.messageService.establishConnection(authUser.userId);
@@ -79,6 +81,7 @@ export class RegisterComponent implements OnInit {
         }
     }
 
+    // TODO: proper error handling
     getErrorMessage() {
         return this.userId.hasError('required') ? 'You must enter a value' :
             this.userName.hasError('required') ? 'You must enter a value' :

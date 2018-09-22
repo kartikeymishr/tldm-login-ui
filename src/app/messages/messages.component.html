@@ -21,7 +21,7 @@
     </div>
 
     <!--div for displaying broadcast messages-->
-    <div *ngIf="messageService.isDisplayed">
+    <div *ngIf="(messageService.displayMessage.isDisplayed)&&(messageService.displayMessage.userId===messageService.receiver.userId)">
         <div *ngFor="let msg of messageService.messagesArr">
             <div *ngIf="(msg.sender.userId===messageService.sender.userId)||(msg.receiver.userId===messageService.sender.userId)">
                 <div [className]="msg.sender.userId===messageService.sender.userId?'sender':'recipient'">
@@ -41,5 +41,4 @@
             </div>
         </div>
     </div>
-
 </div>

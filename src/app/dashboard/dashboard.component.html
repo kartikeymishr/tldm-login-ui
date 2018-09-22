@@ -17,8 +17,8 @@
     <mat-sidenav-content class="main">
         <app-messages></app-messages>
         <app-chat-input></app-chat-input>
-        <div class="mat-toolbar">
-            <mat-toolbar color="primary">
+        <div class="toolbar">
+            <mat-toolbar color="primary" class="mat-toolbar">
                 <mat-toolbar-row>
                     <button mat-icon-button (click)="sidenav.toggle()">
                         <mat-icon class="icon" matTooltip="Side Menu">
@@ -30,17 +30,8 @@
                     <span class="spacer"></span><!--spacer for space b/w icons-->
                     <ng-template #senderName><< Sender name >></ng-template>
                     <div class="button-row">
-                        <button mat-icon-button>
-                            <mat-icon class="icon" matTooltip="Search">search</mat-icon>
-                        </button>
-                        <button mat-icon-button>
-                            <mat-icon class="icon" matTooltip="Settings">settings</mat-icon>
-                        </button>
                         <button mat-icon-button (click)="logout()">
                             <mat-icon class="icon" matTooltip="Logout">exit_to_app</mat-icon>
-                        </button>
-                        <button mat-icon-button>
-                            <mat-icon class="icon" matTooltip="More options">more_vert</mat-icon>
                         </button>
                     </div>
                 </mat-toolbar-row>

@@ -5,3 +5,8 @@
 .list {
     text-align: center;
 }
+
+.notif-icon {
+    font-size: 16px;
+    color: darkred;
+}

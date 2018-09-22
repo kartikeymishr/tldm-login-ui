@@ -5,6 +5,8 @@ import {Message} from '../model/message';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {User} from '../model/user';
+import {Notification} from '../model/notification';
+import {DisplayMessage} from '../model/display-message';
 
 
 @Injectable({
@@ -20,7 +22,8 @@ export class MessageService {
     sender: User;
     receiver: User;
 
-    isDisplayed = false;
+    notification = new Notification(false, 'userId');
+    displayMessage = new DisplayMessage(false, 'userId');
 
     constructor(private http: HttpClient) {
     }
@@ -51,6 +54,8 @@ export class MessageService {
     }
 
     showGreeting(message) {
+        this.notification = new Notification(true, message.sender.userId);
+        console.log(this.notification);
         this.messagesArr.push(message);
     }
 
@@ -95,5 +100,13 @@ export class MessageService {
     clearMessages() {
         this.messages = [];
         this.messagesArr = [];
+    }
+
+    resetNotification() {
+        this.notification.isActive = false;
+    }
+
+    setDisplayMessage(userId: string) {
+        this.displayMessage = new DisplayMessage(true, userId);
     }
 }
