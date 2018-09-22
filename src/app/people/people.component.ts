@@ -43,7 +43,6 @@ export class PeopleComponent implements OnInit {
             this.messageService.getAllMessagesBySenderAndReceiver().subscribe(messages => {
                 console.log(this.messages = messages);
                 this.messageService.setMessages(this.messages);
-                this.messageService.isDisplayed = true;
             });
         });
     }

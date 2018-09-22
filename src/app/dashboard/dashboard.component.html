@@ -16,7 +16,9 @@
 
     <mat-sidenav-content class="main">
         <app-messages></app-messages>
-        <app-chat-input></app-chat-input>
+        <div *ngIf="messageService.receiver">
+            <app-chat-input></app-chat-input>
+        </div>
         <div class="toolbar">
             <mat-toolbar color="primary" class="mat-toolbar">
                 <mat-toolbar-row>
@@ -25,10 +27,15 @@
                             menu
                         </mat-icon>
                     </button>
+                    <div *ngIf="messageService.receiver">
+                        <span>
+                            {{messageService.receiver.userName}}
+                        </span>
+                    </div>
 
-                    <ng-template #recipientName><< Recipient name >></ng-template>
+                    <!--<ng-template #recipientName><< Recipient name >></ng-template>-->
                     <span class="spacer"></span><!--spacer for space b/w icons-->
-                    <ng-template #senderName><< Sender name >></ng-template>
+                    <!--<ng-template #senderName><< Sender name >></ng-template>-->
                     <div class="button-row">
                         <button mat-icon-button (click)="logout()">
                             <mat-icon class="icon" matTooltip="Logout">exit_to_app</mat-icon>

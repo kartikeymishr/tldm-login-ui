@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
     opened: boolean;
 
     constructor(private router: Router,
-                private messageService: MessageService) {
+                public messageService: MessageService) {
     }
 
     ngOnInit() {

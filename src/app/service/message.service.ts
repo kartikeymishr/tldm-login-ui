@@ -36,6 +36,7 @@ export class MessageService {
             console.log('Connected: ' + frame);
             that.stompClient.subscribe(`/topic/response/${userId}`, function (message) {
                 that.showGreeting(JSON.parse(message.body));
+                console.log(message.body);
             });
         });
     }
