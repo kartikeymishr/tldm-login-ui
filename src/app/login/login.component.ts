@@ -54,7 +54,8 @@ export class LoginComponent implements OnInit {
                     this.messageService.clearMessages();
                     this.router.navigateByUrl('/dashboard');
                     this.messageService.establishConnection(data.userId);
-                    this.userService.getUserDetailsById(data.userId).subscribe(user => {
+                    this.userService.getUserDetailsById(data.userId)
+                        .subscribe(user => {
                         this.messageService.setSender(user);
                         console.log('from login component');
                         console.log(user);

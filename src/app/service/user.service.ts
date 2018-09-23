@@ -15,10 +15,10 @@ export class UserService {
     receiverName: string;
     senderName: string;
 
-    baseUrl = 'http://172.23.239.62:8069/api/user';
-
     constructor(private httpClient: HttpClient) {
     }
+
+    baseUrl = 'http://172.23.239.62:8069';
 
     setSender(name: string) {
         this.senderName = name;
@@ -29,18 +29,18 @@ export class UserService {
     }
 
     registerUser(user: User): Observable<User> {
-        return this.httpClient.post<User>(this.baseUrl, user, httpOptions);
+        return this.httpClient.post<User>(`${this.baseUrl}/register`, user, httpOptions);
     }
 
     getAllUsers(): Observable<User[]> {
-        return this.httpClient.get<User[]>(this.baseUrl);
+        return this.httpClient.get<User[]>(`${this.baseUrl}/api/v1/user`);
     }
 
     getUserDetailsByName(name: string): Observable<User> {
-        return this.httpClient.get<User>(`${this.baseUrl}/name/${name}`);
+        return this.httpClient.get<User>(`${this.baseUrl}/api/v1/user/name/${name}`);
     }
 
     getUserDetailsById(userId: string): Observable<User> {
-        return this.httpClient.get<User>(`${this.baseUrl}/${userId}`);
+        return this.httpClient.get<User>(`${this.baseUrl}/api/v1/user/${userId}`);
     }
 }

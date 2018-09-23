@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {MessageService} from '../service/message.service';
+import {User} from '../model/user';
 
 @Component({
     selector: 'app-dashboard',

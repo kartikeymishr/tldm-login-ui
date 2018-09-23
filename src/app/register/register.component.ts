@@ -58,24 +58,15 @@ export class RegisterComponent implements OnInit {
         });
     }
 
-    register(password2) {
-        if (this.authUser.password === password2) {
-            this.authService.register(this.authUser)
-                .subscribe((authUser) => {
-                    console.log(`Successfully added ${authUser.userId}`);
-                    if (this.authUser.userId === authUser.userId) {
-                        this.registerSuccess = true;
-                    }
-                    if (this.registerSuccess) {
-                        this.user = new User(this.authUser.userId, this.name, this.authUser.email);
-                        this.userService.registerUser(this.user).subscribe((user) => {
-                            console.log('Registered ' + user);
-                            this.messageService.setSender(user);
-                        });
-                        this.router.navigateByUrl('/dashboard');
-                        this.messageService.establishConnection(authUser.userId);
-                    }
-                });
+    register(userId, userName, userMail, password, password2) {
+        this.user = new User(userId, userName, password, userMail);
+        if (password === password2) {
+            this.userService.registerUser(this.user).subscribe(data => {
+                console.log('successfully registered ' + data.userName);
+                this.router.navigateByUrl('/dashboard');
+                this.messageService.establishConnection(data.userId);
+                this.messageService.setSender(this.user);
+            });
         } else {
             console.log('Passwords do not match!');
         }

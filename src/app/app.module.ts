@@ -9,7 +9,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MainComponentComponent} from './main-component/main-component.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule, MatListModule, MatCardModule} from '@angular/material';
+import {MatButtonModule, MatListModule, MatCardModule, MatSelectModule, MatFormFieldModule, MatTabsModule} from '@angular/material';
 import {MatCheckboxModule, MatTooltipModule} from '@angular/material';
 import {MatMenuModule} from '@angular/material/menu';
 import {MessagesComponent} from './messages/messages.component';
@@ -25,6 +25,7 @@ import {LoginComponent} from './login/login.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {SortbyTimestampPipe} from './sortby-timestamp.pipe';
+import {ChannelPageComponent} from './channel-page/channel-page.component';
 
 @NgModule({
     declarations: [
@@ -40,7 +41,8 @@ import {SortbyTimestampPipe} from './sortby-timestamp.pipe';
         RegisterComponent,
         LoginComponent,
         PageNotFoundComponent,
-        SortbyTimestampPipe
+        SortbyTimestampPipe,
+        ChannelPageComponent
     ],
     imports: [
         BrowserModule,
@@ -59,7 +61,26 @@ import {SortbyTimestampPipe} from './sortby-timestamp.pipe';
         HttpClientModule,
         AppRoutingModule,
         ReactiveFormsModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatSelectModule,
+        BrowserAnimationsModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        MatListModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatTooltipModule,
+        MatMenuModule,
+        MatInputModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        FormsModule,
+        HttpClientModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        MatTabsModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

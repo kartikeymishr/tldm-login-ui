@@ -3,16 +3,19 @@
         Register
     </h2>
 </div>
-
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<br>
 <div>
-    <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register(password2.value)" novalidate>
+    <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register(userId.value, userName.value, userMail.value, password.value, password2.value)" novalidate>
         <div class="login-form">
             <mat-form-field appearance="outline">
                 <mat-label>User ID</mat-label>
                 <input id="userId"
                        matInput
                        formControlName="userId"
-                       [(ngModel)]="authUser.userId"
+                       #userId
                        placeholder="Enter your User ID">
                 <mat-error *ngIf="userId.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
@@ -23,7 +26,7 @@
                 <input id="userName"
                        matInput
                        formControlName="userName"
-                       [(ngModel)]="name"
+                       #userName
                        placeholder="Enter your Full Name">
                 <mat-error *ngIf="userName.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
@@ -34,7 +37,7 @@
                 <input id="email"
                        matInput
                        formControlName="email"
-                       [(ngModel)]="authUser.email"
+                       #userMail
                        placeholder="Enter your Email ID">
                 <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
@@ -45,7 +48,7 @@
                 <input id="password"
                        matInput
                        formControlName="password"
-                       [(ngModel)]="authUser.password"
+                       #password
                        placeholder="Enter your password"
                        [type]="hide ? 'password':'text'">
                 <mat-icon matSuffix (click)="hide = !hide">
@@ -69,6 +72,7 @@
                 <mat-error *ngIf="password2.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
             <br>
+
             <div class="button-row">
                 <button mat-raised-button
                         color="primary"

@@ -7,6 +7,8 @@ import {Observable} from 'rxjs';
 import {User} from '../model/user';
 import {Notification} from '../model/notification';
 import {DisplayMessage} from '../model/display-message';
+import {Channel} from '../model/channel';
+import {ChannelMessage} from '../model/channel-message';
 
 
 @Injectable({
@@ -14,13 +16,17 @@ import {DisplayMessage} from '../model/display-message';
 })
 export class MessageService {
 
-    private serverUrl = 'http://172.23.239.122:8067/web-socket';
+    private userServerUrl = 'http://172.23.239.122:8067/user-web-socket';
+    private channelServerUrl = 'http://172.23.239.122:8067/channel-web-socket';
     private stompClient = null;
+
     messagesArr: Message[] = [];
     messages: Message[] = [];
 
     sender: User;
     receiver: User;
+
+    isChannelActivated: boolean;
 
     notification = new Notification(false, 'userId');
     displayMessage = new DisplayMessage(false, 'userId');
@@ -29,7 +35,7 @@ export class MessageService {
     }
 
     establishConnection(userId: string) {
-        const socket = new SockJS(this.serverUrl);
+        const socket = new SockJS(this.userServerUrl);
         this.stompClient = Stomp.over(socket);
         const that = this;
         this.stompClient.connect({}, function (frame) {
@@ -38,6 +44,20 @@ export class MessageService {
                 that.showGreeting(JSON.parse(message.body));
                 console.log(message.body);
             });
+        });
+    }
+
+    establishConnectionForChannel(channelList: Channel[]) {
+        const socket = new SockJS(this.channelServerUrl);
+        this.stompClient = Stomp.over(socket);
+        const that = this;
+        this.stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+            for (let i = 0; i < channelList.length; i++) {
+                that.stompClient.subscribe(`/topic-group/response/${channelList[i].channelId}`, function (message) {
+                    that.showGreeting(JSON.parse(message.body));
+                });
+            }
         });
     }
 
@@ -80,6 +100,11 @@ export class MessageService {
         console.log('form message service');
         console.log(message);
         this.stompClient.send('/app/chat', {}, JSON.stringify(message));
+    }
+
+    sendMessageToChannel(channelMessage: ChannelMessage) {
+        console.log(channelMessage);
+        this.stompClient.send('/app/channel-chat', {}, JSON.stringify(channelMessage));
     }
 
     setMessages(messages: Message[]) {

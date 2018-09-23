@@ -1,0 +1,51 @@
+<div class="channel">
+    <h2>
+        Create a Channel
+    </h2>
+</div>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<br>
+<div class="create-channel">
+    <form>
+        <div class="create-channel-form">
+            <mat-form-field appearance="outline">
+                <mat-label>Enter Channel Name</mat-label>
+                <input id="channelName"
+                       matInput
+                       #channelName>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Enter Channel Description</mat-label>
+                <input id="channelDescription"
+                       matInput
+                       #channelDescription>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field appearance="outline">
+                <mat-select placeholder="Select Users" multiple>
+                    <mat-option *ngFor="let user of users"
+                                [value]="user.userName"
+                                (click)="addUsers(user)">
+                        {{user.userName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+
+            <div class="button-row">
+                <button mat-raised-button
+                        color="primary"
+                        type="submit"
+                        id="createChannel"
+                        (click)="create(channelName.value, channelDescription.value)">
+                    Create
+                </button>
+            </div>
+            <br>
+        </div>
+    </form>
+</div>
